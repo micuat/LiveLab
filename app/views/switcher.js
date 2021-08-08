@@ -9,6 +9,7 @@ module.exports = class Switcher extends Component {
     this.opacity = 100
     this.window = null
     this.windowVideo = null
+    this.state = state
 
     // explicitly listen to update because not always called
     state.multiPeer.on('update', () => {
@@ -47,6 +48,9 @@ module.exports = class Switcher extends Component {
     win.document.title = title
     win.document.body.innerHTML = ''
     var vid = win.document.createElement('video')
+    if (this.state.hydraWindow !== undefined) {
+      this.state.hydraWindow.window.s3.init({src: vid});
+    }
     vid.autoplay = 'autoplay'
     vid.loop = 'loop'
     vid.muted = 'muted'
