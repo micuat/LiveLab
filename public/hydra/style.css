@@ -1,0 +1,105 @@
+/* CSS files add styling rules to your content */
+
+html,
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+h1 {
+  font-style: italic;
+  color: #373fff;
+}
+
+/* .main {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+ */
+
+.code {
+  margin: 1em;
+  padding: 1em;
+  background-color: aliceblue;
+  display: none;
+}
+
+.reload {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#editors {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 5px 60px 5px 60px;
+  box-sizing: border-box;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+/* .container {
+  width:50%;
+}
+ */
+#editor-container .CodeMirror {
+  font-family: VT323, monospace;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 0;
+  box-sizing: border-box;
+  z-index: 1;
+  width: 100%;
+  height: calc(100vh - 10px);
+
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 20pt;
+}
+
+#editor-console-text {
+  color: crimson;
+  font-family: VT323, monospace;
+  font-size: 18pt;
+}
+
+#editor-console-text.normal {
+  color: black;
+}
+
+#editor-console-text.error {
+  color: crimson;
+}
+
+#canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.styled-background {
+  background-color: salmon
+}
+
+#editor-console {
+  font-family: "VT323", monospace;
+  font-variant-ligatures: no-common-ligatures;
+  font-size: 14pt;
+  color: #000000;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.5);
+}

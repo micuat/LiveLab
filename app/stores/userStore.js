@@ -143,6 +143,10 @@ module.exports = (state, emitter) => {
     }, video: true})
   })
 
+  emitter.on('user:openHydra', () => {
+    openHydra();
+  });
+
   emitter.on('user:addStream', (stream, label = '') => {
     if (stream) {
       state.multiPeer.addStream(stream, {
@@ -162,6 +166,31 @@ module.exports = (state, emitter) => {
       window.track = stream.getAudioTracks()[0]
       state.multiPeer.addStream(stream)
       emitter.emit('render')
+    } catch (err) {
+      emitter.emit('log:warn', err)
+    }
+    return stream
+  }
+
+  async function openHydra(options) {
+    let stream = null
+    try {
+      // stream = await navigator.mediaDevices.getDisplayMedia(
+      //   displayMediaOptions
+      // )
+      // console.log(stream, stream)
+      // window.track = stream.getAudioTracks()[0]
+      let w = window.open("/hydra", "Hydra", 'width=400,height=200,scrollbars=yes')
+      setTimeout(()=>{
+      let canvas = w.document.querySelector('canvas');
+      console.log(canvas)
+
+      // Optional frames per second argument.
+      stream = canvas.captureStream(25);
+      state.multiPeer.addStream(stream)
+
+      emitter.emit('render')
+      },2000)
     } catch (err) {
       emitter.emit('log:warn', err)
     }

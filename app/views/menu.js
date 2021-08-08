@@ -78,6 +78,13 @@ module.exports = (state, emit) => {
       // info: '+'
           advanced: true
         })}
+        ${screenIcon({
+          icon: 'fa-bomb',
+          title: 'Add hydra stream',
+          onclick: () => emit('user:openHydra'),
+      // info: '+'
+          // advanced: true
+        })}
 
         ${menuIcon({
           icon: 'fa-phone-slash',
