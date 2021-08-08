@@ -89,8 +89,16 @@ function evalCode(c) {
 var hydra = new Hydra({
   canvas,
   detectAudio: false,
-  enableStreamCapture: false
+  enableStreamCapture: false,
+  numSources: 8,
 });
+
+// convenience for livelab
+var sA = s4;
+var sB = s5;
+var sC = s6;
+var sD = s7;
+
 {
   //http://hydra-book.glitch.me/#/glsl?id=custom-glsl
   setFunction({
