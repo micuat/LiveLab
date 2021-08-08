@@ -180,7 +180,7 @@ module.exports = (state, emitter) => {
       // )
       // console.log(stream, stream)
       // window.track = stream.getAudioTracks()[0]
-      let w = window.open("/hydra", "Hydra", 'width=400,height=200,scrollbars=yes')
+      let w = window.open("/hydra", "Hydra", 'width=640,height=480,scrollbars=yes')
       let handle = setInterval(() => {
         let canvas = w.document.querySelector('canvas');
         if (canvas !== null) {
