@@ -174,14 +174,24 @@ module.exports = (state, emitter) => {
 
   async function openHydra(options) {
     let stream = null
+    if (state.hydraWindow !== undefined) {
+      return;
+    }
     try {
       // stream = await navigator.mediaDevices.getDisplayMedia(
       //   displayMediaOptions
       // )
       // console.log(stream, stream)
       // window.track = stream.getAudioTracks()[0]
-      let w = window.open("/hydra", "Hydra", 'width=640,height=480,scrollbars=yes')
+      let w = window.open("/hydra", "Hydra", 'width=640,height=480,scrollbars=yes');
+      state.hydraWindow = w;
       let handle = setInterval(() => {
+        w.addEventListener("beforeunload", function () {
+          console.log("closing")
+          // state.multiPeer.removeStream(stream);
+          emitter.emit('user:endStream', stream); // not working
+          state.hydraWindow = undefined;
+        });
         let canvas = w.document.querySelector('canvas');
         if (canvas !== null) {
           clearInterval(handle);
