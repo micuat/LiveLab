@@ -181,16 +181,18 @@ module.exports = (state, emitter) => {
       // console.log(stream, stream)
       // window.track = stream.getAudioTracks()[0]
       let w = window.open("/hydra", "Hydra", 'width=400,height=200,scrollbars=yes')
-      setTimeout(()=>{
-      let canvas = w.document.querySelector('canvas');
-      console.log(canvas)
+      let handle = setInterval(() => {
+        let canvas = w.document.querySelector('canvas');
+        if (canvas !== null) {
+          clearInterval(handle);
 
-      // Optional frames per second argument.
-      stream = canvas.captureStream(25);
-      state.multiPeer.addStream(stream)
+          // Optional frames per second argument.
+          stream = canvas.captureStream(25);
+          state.multiPeer.addStream(stream);
 
-      emitter.emit('render')
-      },2000)
+          emitter.emit('render')
+        }
+      }, 500)
     } catch (err) {
       emitter.emit('log:warn', err)
     }
