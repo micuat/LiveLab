@@ -47,7 +47,14 @@ module.exports = (state, emit) => {
               isActive = true
             }
             return html`<i
-               onclick=${() => emit('layout:setSwitcher', switcher, stream)}
+               onclick=${() => {
+                 emit('layout:setSwitcher', switcher, stream)
+                 if (state.hydraWindow !== undefined) {
+                   let id = state.cache(Video, `video-${index}`)._proxy.id;
+                   console.log(switcher, id)
+                   state.hydraWindow.window[`s${switcher.toUpperCase()}`].init({src: document.getElementById(id)});
+                 }
+               }}
                class="dim pointer ma2 b ttu"
                style=${isActive
               ? `color:${state.style.colors.accent0}`

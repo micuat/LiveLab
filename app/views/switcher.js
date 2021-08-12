@@ -48,9 +48,6 @@ module.exports = class Switcher extends Component {
     win.document.title = title
     win.document.body.innerHTML = ''
     var vid = win.document.createElement('video')
-    if (this.state.hydraWindow !== undefined) {
-      this.state.hydraWindow.window[`s${this.name.toUpperCase()}`].init({src: vid});
-    }
     vid.autoplay = 'autoplay'
     vid.loop = 'loop'
     vid.muted = 'muted'
