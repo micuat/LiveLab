@@ -50,7 +50,7 @@ h1 {
 }
  */
 #editor-container .CodeMirror {
-  font-family: VT323, monospace;
+  font-family: 'Roboto Mono', monospace;
   position: relative;
   top: 0;
   left: 0;
@@ -61,13 +61,13 @@ h1 {
   height: calc(100vh - 10px);
 
   background-color: rgba(255, 255, 255, 0);
-  font-size: 20pt;
+  font-size: 16pt;
 }
 
 #editor-console-text {
   color: crimson;
-  font-family: VT323, monospace;
-  font-size: 18pt;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14pt;
 }
 
 #editor-console-text.normal {
@@ -93,7 +93,7 @@ h1 {
 }
 
 #editor-console {
-  font-family: "VT323", monospace;
+  font-family: "Roboto Mono", monospace;
   font-variant-ligatures: no-common-ligatures;
   font-size: 14pt;
   color: #000000;
@@ -102,4 +102,8 @@ h1 {
   left: 0;
   z-index: 1;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+span[role=presentation] {
+  background-color: rgba(0,0,0, 0.7);
 }
